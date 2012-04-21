@@ -4,6 +4,10 @@ require 'sinatra'
 require 'open-uri'
 require 'cgi'
 
+before do
+  content_type :html, 'charset' => 'utf-8'
+end
+
 get '/' do
   content_type "audio/mpeg"
   query_string = params.map{ |k,v| "#{k}=#{URI.encode(v)}" }.join("&")
